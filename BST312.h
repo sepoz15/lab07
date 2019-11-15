@@ -436,8 +436,31 @@ vector<ItemType> BST_312 <ItemType>::postOrderTraversal()
 template<class ItemType>
 bool BST_312 <ItemType>::isItemInTree(const ItemType& item)
 {
-  //YOUR CODE GOES HERE
-
+    //YOUR CODE GOES HERE
+    if(root == NULL)
+    {
+        return false;
+    }
+    else
+    {
+        TreeNode n = root;
+        while(n.data != item)
+        {
+            if(item > n.data)
+            {
+                n = n.right;
+            }
+            if(item < n.data)
+            {
+                n = n.left;
+            }
+            if(n == NULL)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
 #endif
