@@ -381,7 +381,6 @@ void BST_312 <ItemType>::preOrderTraversal(TreeNode* t,vector<ItemType>& result)
 }
 
 
-
 template<class ItemType>
 vector<ItemType> BST_312 <ItemType>::preOrderTraversal()
 {
@@ -461,7 +460,6 @@ bool BST_312 <ItemType>::isItemInTree(const ItemType& item)
         }
         return true;
     }
-
 }
 #endif
 
