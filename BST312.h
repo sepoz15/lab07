@@ -350,12 +350,28 @@ template<class ItemType>
 int BST_312 <ItemType>::countNodes()
 {
     //YOUR CODE GOES HERE
+    int count = 1;
+    if(t->right != NULL)
+    {
+        count += countNodes(t->right);
+    }
+    if(t->left != NULL)
+    {
+        count += countNodes(t->left);
+    }
+    return count;
 }
 
 template<class ItemType>
 void BST_312 <ItemType>::preOrderTraversal(TreeNode* t,vector<ItemType>& result) const
 {
     //YOUR CODE GOES HERE
+    int count = 0;
+    if(root != NULL)
+    {
+        count = countNodes(root);
+    }
+    return count;
 }
 
 
