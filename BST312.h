@@ -342,7 +342,7 @@ template<class ItemType>
 int BST_312 <ItemType>::countNodes(TreeNode* t) const
 {
     //YOUR CODE GOES HERE
-
+    insertItem(root, newItem);
 }
 
 
