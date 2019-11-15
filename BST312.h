@@ -400,13 +400,21 @@ template<class ItemType>
 vector<ItemType> BST_312 <ItemType>::inOrderTraversal()
 {
     //YOUR CODE GOES HERE
+    if(t != NULL)
+    {
+        inOrderTraversal(t->left, result);
+        result.push_back(t->data);
+        inOrderTraversal(t->right, result);
+    }
 }
 
 template<class ItemType>
 void BST_312 <ItemType>::postOrderTraversal(TreeNode* t,vector<ItemType>& result) const
 {
-
     //YOUR CODE GOES HERE
+    vector<ItemType> result;
+    inOrderTraversal(root, result);
+    return result;
 }
 
 template<class ItemType>
