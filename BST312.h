@@ -301,7 +301,33 @@ void BST_312 <ItemType>::insertItem(TreeNode*& t, const ItemType& newItem)
 {
 
     //YOUR CODE GOES HERE
-
+    ItemType ptr;
+    if(root == NULL)
+    {
+        TreeNode *n = new TreeNode;
+        n->left = NULL;
+        n->right = NULL;
+        n->data = newItem;
+        root = n;
+        return;
+    }
+    else if(t == NULL)
+    {
+        TreeNode *n = new TreeNode;
+        n->left = NULL;
+        n->right = NULL;
+        n->data = newItem;
+        t = n;
+        return;
+    }
+    else {
+        if (t->data > newItem) {
+            insertItem(t->left, newItem);
+        }
+        if (t->data < newItem) {
+            insertItem(t->right, newItem);
+        }
+    }
 }
 
 template<class ItemType>
