@@ -252,16 +252,9 @@ void BST_312 <ItemType>::makeEmpty(TreeNode*& t)
     {
         return;
     }
-    if(t->left != NULL)
-    {
-        deleteNode(t->left);
-        makeEmpty(t->left);
-    }
-    if(t->right != NULL)
-    {
-        deleteNode(t->right);
-        makeEmpty(t->right);
-    }
+    makeEmpty(t->left);
+    makeEmpty(t->right);
+    delete(t);
 }
 
 template<class ItemType>
@@ -301,32 +294,17 @@ void BST_312 <ItemType>::insertItem(TreeNode*& t, const ItemType& newItem)
 {
 
     //YOUR CODE GOES HERE
-    ItemType ptr;
-    if(root == NULL)
+    if(t == NULL)
     {
-        TreeNode *n = new TreeNode;
-        n->left = NULL;
-        n->right = NULL;
-        n->data = newItem;
-        root = n;
-        return;
+        t = new TreeNode({newItem, NULL, NULL});
     }
-    else if(t == NULL)
+    if (t->data > newItem)
     {
-        TreeNode *n = new TreeNode;
-        n->left = NULL;
-        n->right = NULL;
-        n->data = newItem;
-        t = n;
-        return;
+        insertItem(t->left, newItem);
     }
-    else {
-        if (t->data > newItem) {
-            insertItem(t->left, newItem);
-        }
-        if (t->data < newItem) {
-            insertItem(t->right, newItem);
-        }
+    if (t->data < newItem)
+    {
+        insertItem(t->right, newItem);
     }
 }
 
@@ -442,24 +420,35 @@ bool BST_312 <ItemType>::isItemInTree(const ItemType& item)
     }
     else
     {
-        TreeNode n = root;
-        while(n.data != item)
+        TreeNode *n = root;
+        while(n != NULL)
         {
-            if(item > n.data)
+            if(item > n->data)
             {
-                n = n.right;
+                n = n->right;
             }
-            if(item < n.data)
+            else if(item < n->data)
             {
-                n = n.left;
+                n = n->left;
             }
-            if(n == NULL)
+            else if(n->data == item)
             {
-                return false;
+
+	       return true;
             }
         }
-        return true;
+
+        return false;
     }
+    /*vector<ItemType> nodes = postOrderTraversal();
+    for(auto i : nodes)
+    {
+        if(i == item)
+        {
+            return true;
+        }
+    }
+    return false;*/
 }
 #endif
 

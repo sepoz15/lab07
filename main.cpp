@@ -55,5 +55,10 @@ int main() {
     cout << "number of nodes in tree after delete is " << bst.countNodes() << endl;
     cout << endl;
 
+    bool x = bst.isItemInTree("a");
+    bool y = bst.isItemInTree("hello");
+
+    cout << x << endl;
+    cout << y << endl;
 }
 
